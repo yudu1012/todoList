@@ -1,7 +1,7 @@
 import TodoItem from './TodoItem'
 
 const TodoList = (props) => {
-    let{tasks = []} = props;
+    let{tasks = [],deleteTask,toggle,locale} = props;
     const hasTasks = true
 
   if (!hasTasks) {
@@ -11,11 +11,14 @@ const TodoList = (props) => {
   return (
     <ul className="todo__list">
         {
-            tasks.map((task)=>
+            ( locale ?? tasks).map((task)=>
                 <TodoItem
                     key={task.id}
                     className={'todo__item'}
                     {...task}
+                    deleteTask={deleteTask}
+                    toggle={toggle}
+
                 />
             )
         }
